@@ -1,0 +1,43 @@
+{
+  "shared": {
+    "fullName": "Pratap Chaulagain",
+    "firstName": "Pratap",
+    "cta": {
+      "lable1": "Read My Poems",
+      "lable2": "View Awards"
+    },
+    "contacts": {
+      "name": {
+        "label": "Name",
+        "value": "Pratap Chaulagain"
+      },
+      "address": {
+        "label": "Address",
+        "value": "Kathmandu, Nepal"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+977 9863705846"
+      },
+      "email": {
+        "label": "Email",
+        "value": "pratapchaulagain952@gmail.com"
+      }
+    }
+  },
+  "heroSection": {
+    "title": "Poet • Writer • Essayist",
+    "description": "Award-winning poet and essayist Pratap Chaulagain crafts works that reflect on memory, culture, identity, and the human condition. Recognized through multiple national literary honors, his poetry and prose invite readers to pause, reflect, and connect with the stories that shape us."
+  },
+  "poemSection": {
+    "title": "Featured  Poems",
+    "description": "A collection of poems exploring memory, identity, love, nature, and the quiet moments that shape human experience.",
+    "viewAll": "Read More",
+    "show": "Show",
+    "hide": "Hide"
+  },
+  "awardSection": {
+    "title": "Awards & Recognition",
+    "description": "Awarded various local and national awards, and awarded in various national and international poetry competitions."
+  }
+}
