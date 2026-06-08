@@ -12,7 +12,7 @@ import siteConfig from "@/lib/site"
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" })
 
-export const notoSansDevanagari = Noto_Sans({
+const notoSansDevanagari = Noto_Sans({
   subsets: ["devanagari"],
   variable: "--font-sans",
 })
