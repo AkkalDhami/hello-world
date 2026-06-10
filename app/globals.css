@@ -8,6 +8,7 @@
   --color-poem: var(--poem);
   --color-edge: var(--edge);
   --font-sans: var(--font-sans);
+  --font-manrope: var(--font-manrope);
   --font-devanagari: var(--font-devanagari);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -50,7 +51,7 @@
 }
 
 :root {
-  --poem: var(--color-neutral-600);
+  --poem: var(--color-neutral-700);
   --edge: color-mix(in oklab, var(--border) 94%, var(--background));
   --background: var(--color-neutral-50);
   --foreground: oklch(0.145 0 0);
@@ -87,7 +88,7 @@
 }
 
 .dark {
-  --poem: var(--color-neutral-400);
+  --poem: var(--color-neutral-300);
   --edge: #242424;
   --background: var(--color-neutral-900);
   --foreground: oklch(0.985 0 0);

@@ -5,16 +5,23 @@ import { ThemeProvider } from "@/components/providers/theme-provider"
 
 import "../globals.css"
 import { cn } from "@/lib/utils"
-import { Manrope, Noto_Sans } from "next/font/google"
+import { Manrope, Noto_Sans, Noto_Sans_Devanagari } from "next/font/google"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Metadata } from "next"
 import siteConfig from "@/lib/site"
+import { AudioProvider } from "@/components/providers/audio-provider"
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" })
+const fontManrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" })
 
-const notoSansDevanagari = Noto_Sans({
+const notoSans = Noto_Sans({
   subsets: ["devanagari"],
   variable: "--font-sans",
+})
+
+const notoSansDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  variable: "--font-devanagari",
 })
 
 export const metadata: Metadata = {
@@ -84,20 +91,26 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Enable static rendering
   // setRequestLocale(locale)
 
-  const fontClass =
-    locale === "np" ? notoSansDevanagari.variable : manrope.variable
+  const fontClass = locale === "np" ? notoSans.variable : manrope.variable
 
   return (
     <>
       <html
         lang="en"
         suppressHydrationWarning
-        className={cn("antialiased", fontClass)}
+        className={cn(
+          "antialiased",
+          fontClass,
+          notoSansDevanagari.variable,
+          fontManrope.variable
+        )}
       >
         <body>
           <NextIntlClientProvider>
             <ThemeProvider>
-              <TooltipProvider>{children}</TooltipProvider>
+              <TooltipProvider>
+                <AudioProvider>{children}</AudioProvider>
+              </TooltipProvider>
             </ThemeProvider>
           </NextIntlClientProvider>
         </body>
