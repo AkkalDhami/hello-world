@@ -1,18 +1,24 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Section } from "@/components/ui/section"
 import { SubHeading } from "@/components/ui/sub-heading"
 import { Heading } from "@/components/ui/heading"
 import { AnimatedText } from "@/components/ui/animated-text"
-import { POEMS } from "@/data/poems"
+
 import { PoemCard } from "./poem-card"
 import { Button } from "@/components/ui/button"
 import { motion } from "motion/react"
 import Link from "next/link"
+import { getPoems, LocaleType } from "@/data/poems"
 
 export function PoemsSection({ home = false }: { home?: boolean }) {
   const t = useTranslations("poemSection")
+
+  const locale = useLocale() as LocaleType
+
+  const POEMS = getPoems(locale)
+
   return (
     <Section id="poems">
       <Heading>
