@@ -84,7 +84,7 @@ export function Navbar() {
                       <motion.div
                         layoutId="nav-active"
                         initial={false}
-                        className="group absolute bottom-1 left-0 h-[1.6px] w-full rounded-full bg-foreground"
+                        className="group absolute bottom-1 left-px h-[1.6px] w-full rounded-full bg-foreground"
                         transition={{
                           type: "spring",
                           bounce: 0.25,

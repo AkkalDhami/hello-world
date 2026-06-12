@@ -35,7 +35,7 @@ export function PoemCard({
 
   const locale = useLocale() as LocaleType
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null)
 
   useEffect(() => {
@@ -101,7 +101,7 @@ export function PoemCard({
       </motion.button>
       <motion.pre
         animate={{
-          height: open ? "auto" : 200,
+          height: open ? "auto" : 120,
         }}
         className={cn(
           "overflow-hidden font-devanagari leading-relaxed font-normal text-poem sm:text-lg",

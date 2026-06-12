@@ -23,7 +23,6 @@ import {
   GITHUB_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
-  TWITTER_URL,
 } from "@/lib/constants"
 import { motion } from "motion/react"
 
@@ -47,11 +46,6 @@ const socialLinks = [
     name: "GitHub",
     icon: IconBrandGithub,
     href: GITHUB_URL,
-  },
-  {
-    name: "X(Twitter)",
-    icon: IconBrandX,
-    href: TWITTER_URL,
   },
   {
     name: "Email",

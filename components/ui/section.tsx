@@ -6,10 +6,7 @@ export function Section({
   ...props
 }: React.ComponentProps<"section">) {
   return (
-    <section
-      {...props}
-      className={cn("py-10", className)}
-    >
+    <section {...props} className={cn("py-8", className)}>
       {children}
     </section>
   )
