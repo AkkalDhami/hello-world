@@ -5,9 +5,18 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { AwardDataType } from "./awards-section"
 
-export function AwardCard({ item, i }: { item: AwardDataType; i: number }) {
+export function AwardCard({
+  item,
+  i,
+  onOpen,
+}: {
+  item: AwardDataType
+  i: number
+  onOpen: () => void
+}) {
   return (
-    <motion.div
+    <motion.button
+      type="button"
       initial={{
         opacity: 0,
         filter: "blur(15px)",
@@ -19,25 +28,36 @@ export function AwardCard({ item, i }: { item: AwardDataType; i: number }) {
         y: 0,
       }}
       transition={{
-        duration: (i + 1) * 0.26,
-        ease: "circOut",
+        duration: i * 0.26,
+        ease: "anticipate",
       }}
       key={i}
-      className={cn("relative", item.className)}
+      onClick={onOpen}
+      className={cn(
+        "group relative cursor-pointer overflow-hidden rounded-lg text-left",
+        item.className
+      )}
     >
-      <Image
-        width={250}
-        height={250}
-        alt={item.title}
-        src={item.image}
-        className="h-70 w-full rounded-lg mask-b-from-30% object-cover object-center"
-      />
+      <motion.div layoutId={`award-image-${i}`} className="relative">
+        <Image
+          width={250}
+          height={250}
+          alt={item.title}
+          src={item.image}
+          className="h-70 w-full rounded-lg mask-b-from-30% object-cover object-center transition duration-300 group-hover:scale-105"
+        />
+      </motion.div>
       <motion.div className="absolute bottom-2 left-2 z-10 w-full">
-        <div className="flex w-full flex-wrap justify-between pr-6 gap-2 font-devanagari">
-          <p className="font-medium tracking-wide">{item.title}</p>
-          <p>{item.date}</p>
+        <div className="flex w-full flex-wrap justify-between gap-2 pr-6 font-devanagari">
+          <motion.p
+            layoutId={`award-title-${item.title}`}
+            className="font-medium tracking-wide"
+          >
+            {item.title}
+          </motion.p>
+          <motion.p layoutId={`award-date-${item.date}`}>{item.date}</motion.p>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.button>
   )
 }
