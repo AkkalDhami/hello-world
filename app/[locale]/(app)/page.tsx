@@ -7,7 +7,7 @@ export default function page() {
   return (
     <Container className="z-10 overflow-hidden px-8 sm:px-4">
       <HeroSection />
-      <PoemsSection home />
+      <PoemsSection />
       <AwardsSection />
     </Container>
   )
