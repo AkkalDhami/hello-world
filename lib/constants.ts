@@ -3,8 +3,6 @@ export const LINKEDIN_URL =
 
 export const INSTAGRAM_URL = "https://www.instagram.com/chaulagain_pratap"
 
-export const TWITTER_URL = "https://twitter.com/PratapChaulagain"
-
 export const GITHUB_URL = "https://github.com/pratapchaulagain"
 
 export const EMAIL_URL = "mailto:pratapchaulagain952@gmail.com"
