@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section"
 import { cn } from "@/lib/utils"
 import { IconMail, IconMapPin, IconPhone, IconUser } from "@tabler/icons-react"
 import { CopyButton } from "@/components/shared/copy-button"
+import { motion } from "motion/react"
 
 export function ContactsInfo({ className }: { className?: string }) {
   const t = useTranslations("shared")
@@ -33,13 +34,31 @@ export function ContactsInfo({ className }: { className?: string }) {
   ]
   return (
     <Section id="contacts" className={cn(className)}>
-      {contactInfo.map((item) => (
-        <div key={item.label} className="group relative">
+      {contactInfo.map((item, i) => (
+        <motion.div
+          key={item.label}
+          initial={{
+            opacity: 0,
+            filter: "blur(15px)",
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+          }}
+          transition={{
+            duration: i * 0.26,
+            ease: "anticipate",
+          }}
+          viewport={{ once: true }}
+          className="group relative"
+        >
           <div className="flex w-full items-center gap-2">
             <div className="relative">
               <item.icon className="text-muted-primary size-10 rounded-lg border border-edge bg-muted p-2" />
             </div>
-            <div className="flex flex-col text-primary">
+            <div className="text-primary">
               <span className="text-sm font-normal tracking-widest text-muted-foreground uppercase">
                 {item.label}
               </span>
@@ -47,13 +66,13 @@ export function ContactsInfo({ className }: { className?: string }) {
               <CopyButton
                 text={item.value}
                 className={cn(
-                  "p-1.5 text-muted-foreground opacity-0 hover:bg-muted",
+                  "absolute right-2 bottom-0 p-1.5 text-muted-foreground opacity-0 hover:bg-muted",
                   "duration-200 ease-in-out group-hover:opacity-100"
                 )}
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </Section>
   )

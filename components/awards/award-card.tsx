@@ -50,12 +50,14 @@ export function AwardCard({
       <motion.div className="absolute bottom-2 left-2 z-10 w-full">
         <div className="flex w-full flex-wrap justify-between gap-2 pr-6 font-devanagari">
           <motion.p
-            layoutId={`award-title-${item.title}`}
+            layoutId={`award-title-${item.title}-${i}`}
             className="font-medium tracking-wide"
           >
             {item.title}
           </motion.p>
-          <motion.p layoutId={`award-date-${item.date}`}>{item.date}</motion.p>
+          <motion.p layoutId={`award-date-${item.date}-${i}`}>
+            {item.date}
+          </motion.p>
         </div>
       </motion.div>
     </motion.button>

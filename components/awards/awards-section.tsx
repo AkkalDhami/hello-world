@@ -151,7 +151,7 @@ export function AwardsSection() {
                         Award {selectedIndex + 1} / {data.length}
                       </p>
                       <motion.p
-                        layoutId={`award-date-${selectedItem.date}`}
+                        layoutId={`award-date-${selectedItem.date}-${selectedIndex}`}
                         className="rounded-full border border-border px-3 py-1 text-sm font-medium"
                       >
                         {selectedItem.date}
@@ -160,7 +160,7 @@ export function AwardsSection() {
 
                     <div className="space-y-2">
                       <motion.h3
-                        layoutId={`award-title-${selectedItem.title}`}
+                        layoutId={`award-title-${selectedItem.title}-${selectedIndex}`}
                         className="font-devanagari text-base leading-snug font-medium text-foreground sm:text-lg"
                       >
                         {selectedItem.title}
