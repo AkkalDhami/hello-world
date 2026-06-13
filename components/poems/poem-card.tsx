@@ -40,7 +40,7 @@ export function PoemCard({
   const { isShared, share } = useShare({
     title: poem.title,
     text: poem.content,
-    shareUrl: `${pathname}/${poem.id}`,
+    shareUrl: `${pathname}/poems/${poem.id}`,
   })
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export function PoemCard({
         ease: "easeInOut",
       }}
       className={cn(
-        "relative w-auto rounded-lg bg-poem-card p-4 sm:p-6",
+        "relative w-auto rounded-lg bg-poem-card p-2 sm:p-6",
         locale === "en" ? "font-manrope" : "font-devanagari",
         className
       )}
@@ -87,13 +87,13 @@ export function PoemCard({
         data-open={open}
         onClick={() => setOpen((open) => !open)}
         className={cn(
-          "group relative flex w-full cursor-pointer flex-wrap items-center justify-between gap-2"
+          "group relative flex w-full cursor-pointer flex-wrap justify-between gap-2 sm:items-center"
         )}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <SubHeading
             as="h3"
-            className="font-devanagari font-medium text-accent-foreground sm:text-xl"
+            className="max-w-none font-devanagari font-medium text-accent-foreground sm:text-xl"
           >
             {i}. {poem.title}
           </SubHeading>

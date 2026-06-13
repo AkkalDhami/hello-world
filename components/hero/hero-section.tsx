@@ -56,7 +56,7 @@ export function HeroSection() {
             <AnimatedText
               delay={0.02}
               text={tHero("title")}
-              className="font-medium text-muted-foreground sm:text-lg"
+              className="font-medium text-muted-foreground text-lg sm:text-lg"
             />
             <SocialLinks className="gap-4" />
           </div>
@@ -64,7 +64,7 @@ export function HeroSection() {
         <AnimatedText
           delay={0.02}
           text={tHero("description")}
-          className="text-muted-foreground sm:text-lg"
+          className="text-muted-foreground text-lg sm:text-lg"
         />
 
         <Cta />

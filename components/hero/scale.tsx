@@ -17,7 +17,7 @@ export function ScaleRight() {
         duration: 0.3,
         ease: "easeInOut",
       }}
-      className="absolute top-0 right-0 h-full w-4 border-x border-primary/5 bg-[repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)] bg-size-[10px_10px] text-primary/5 lg:w-9"
+      className="top-0 right-0 hidden h-full w-4 border-x border-primary/5 bg-[repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)] bg-size-[10px_10px] text-primary/5 sm:absolute lg:w-9"
     ></motion.div>
   )
 }
@@ -37,7 +37,7 @@ export function ScaleLeft() {
         duration: 0.3,
         ease: "easeInOut",
       }}
-      className="absolute top-0 left-0 h-full w-4 border-x border-primary/5 bg-[repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)] bg-size-[10px_10px] text-primary/5 lg:w-9"
+      className="top-0 left-0 hidden h-full w-4 border-x border-primary/5 bg-[repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)] bg-size-[10px_10px] text-primary/5 sm:absolute lg:w-9"
     ></motion.div>
   )
 }
