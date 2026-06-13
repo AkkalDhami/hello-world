@@ -20,6 +20,10 @@ interface MenuItem {
 
 export const menuItems: MenuItem[] = [
   {
+    label: "About",
+    href: "/about" as Route,
+  },
+  {
     label: "Poems",
     href: "/poems" as Route,
   },
@@ -47,7 +51,7 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky mx-auto top-0 right-0 left-0 z-50 flex max-w-4xl justify-center overflow-hidden">
+      <header className="sticky top-0 right-0 left-0 z-50 mx-auto flex max-w-4xl justify-center overflow-hidden">
         <nav
           className={cn(
             "relative flex items-center justify-between bg-background px-4 py-2.5 transition-all duration-500",
@@ -58,7 +62,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-3 sm:gap-4">
             <div
-              className="flex items-center space-x-3 border-edge/60 pt-2 backdrop-blur-md"
+              className="flex items-center space-x-2 border-edge/60 pt-2 backdrop-blur-md sm:space-x-3"
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {menuItems.map((item, index) => {
@@ -73,7 +77,7 @@ export function Navbar() {
                     href={item.href}
                     onMouseEnter={() => setHoveredIndex(index)}
                     className={cn(
-                      "relative cursor-pointer pb-2 pl-1 text-xs font-medium tracking-widest uppercase transition-all duration-300",
+                      "relative cursor-pointer pb-2 pl-1 text-[10px] font-medium tracking-widest uppercase transition-all duration-300 sm:text-xs",
                       isMoving
                         ? "text-accent-foreground"
                         : "text-primary hover:text-foreground"
@@ -97,7 +101,7 @@ export function Navbar() {
               })}
             </div>
 
-            <div className="flex items-center gap-1 sm:gap-2">
+            <div className="flex items-center gap-0.5 sm:gap-2">
               <ThemeToggle className="" />
               <LanguageToggle className="" />
             </div>

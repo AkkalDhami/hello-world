@@ -147,34 +147,14 @@ export function PoemCard({
             </Link>
           }
         ></Button>
+        <CopyButton
+          text={poem.content}
+          onCopySuccess={() => console.log("Copied")}
+          onCopyError={(error) => console.error("Copy error:", error)}
+          onClick={handleCopy}
+          className="relative rounded-md border bg-muted px-2.25 py-1.75 hover:text-neutral-950"
+        />
       </div>
-
-      {open && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            height: 0,
-            filter: "blur(10px)",
-          }}
-          animate={{
-            opacity: 1,
-            height: "auto",
-            filter: "blur(0px)",
-          }}
-          transition={{
-            duration: 0.3,
-          }}
-          className="mt-1 flex w-full items-center justify-end overflow-hidden"
-        >
-          <CopyButton
-            text={poem.content}
-            onCopySuccess={() => console.log("Copied")}
-            onCopyError={(error) => console.error("Copy error:", error)}
-            onClick={handleCopy}
-            className="absolute rounded-md bg-poem-card p-1.5 hover:text-neutral-950"
-          />
-        </motion.div>
-      )}
     </motion.article>
   )
 }
