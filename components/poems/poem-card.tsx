@@ -78,7 +78,7 @@ export function PoemCard({
         ease: "easeInOut",
       }}
       className={cn(
-        "relative w-auto rounded-lg bg-poem-card p-2 sm:p-6",
+        "relative w-auto rounded-lg bg-poem-card p-4 sm:p-6",
         locale === "en" ? "font-manrope" : "font-devanagari",
         className
       )}
@@ -93,7 +93,7 @@ export function PoemCard({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <SubHeading
             as="h3"
-            className="max-w-none font-devanagari font-medium text-accent-foreground sm:text-xl"
+            className="font-devanagari font-medium text-accent-foreground sm:text-xl"
           >
             {i}. {poem.title}
           </SubHeading>
@@ -129,11 +129,16 @@ export function PoemCard({
           {!open ? t("show") : t("hide")}
         </Button>
 
-        <Button variant={"outline"} size={"sm"} onClick={share}>
+        <Button
+          variant={"outline"}
+          size={"sm"}
+          onClick={share}
+          className={"text-muted-foreground hover:text-primary"}
+        >
           {isShared ? (
             <IconCheck className="size-3.5 text-green-600 sm:size-4" />
           ) : (
-            <IconShare3 className="size-3.5 text-primary sm:size-4" />
+            <IconShare3 className="size-3.5 sm:size-4" />
           )}
         </Button>
 
@@ -141,6 +146,7 @@ export function PoemCard({
           variant={"outline"}
           nativeButton={false}
           size={"sm"}
+          className={"text-muted-foreground hover:text-primary"}
           render={
             <Link href={`/poems/${poem.id}` as Route}>
               <IconLink className="size-3.5 sm:size-4" />

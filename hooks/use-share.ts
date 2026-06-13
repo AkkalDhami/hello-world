@@ -17,7 +17,7 @@ export function useShare({ title, text, shareUrl }: UseShareProps) {
 
   const url = useMemo(() => {
     if (typeof window === "undefined") return pathname
-    if (shareUrl) return `${window.location.origin}/${shareUrl}`
+    if (shareUrl) return `${window.location.origin}${shareUrl}`
 
     return `${window.location.origin}${pathname}`
   }, [shareUrl, pathname])
@@ -33,7 +33,7 @@ export function useShare({ title, text, shareUrl }: UseShareProps) {
       if (navigator.share) {
         await navigator.share({
           title,
-          text,
+          text: text?.slice(0, 100),
           url,
         })
       }

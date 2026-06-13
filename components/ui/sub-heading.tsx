@@ -32,7 +32,7 @@ export function SubHeading({
         ease: "easeInOut",
       }}
       className={cn(
-        "animate-fade-in-blur max-w-3xl text-base text-muted-foreground sm:text-lg",
+        "animate-fade-in-blur sm:max-w-3xl text-base text-muted-foreground sm:text-lg",
         as === "h3" && "font-medium",
         className
       )}
