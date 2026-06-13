@@ -24,9 +24,9 @@ export function CopyStateIcon({ state }: { state: CopyState }) {
       <IconCheck
         size={16}
         className={cn(
-          "stroke-primary transition-all group-hover:text-primary",
+          "stroke-green-600 transition-all group-hover:text-primary",
           "scale-100 opacity-100",
-          "stroke-primary group-hover/icon:stroke-primary"
+          "stroke-green-600 group-hover/icon:stroke-primary"
         )}
       />
     </span>

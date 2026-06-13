@@ -10,17 +10,15 @@ import {
   ChevronsUpDownIconHandle,
 } from "@/components/ui/chevrons-up-down-icon"
 import { useEffect, useRef, useState } from "react"
-import { useLocale } from "next-intl"
-import { LocaleType } from "@/data/poems"
+import { useLocale, useTranslations } from "next-intl"
+import { LocaleType, Poem } from "@/data/poems"
 import { AudioPlayer } from "@/components/shared/audio-player"
-
-export type Poem = {
-  id: number
-  title: string
-  subtitle?: string
-  content: string
-  src: string
-}
+import { Button } from "@/components/ui/button"
+import { IconCheck, IconLink, IconShare3 } from "@tabler/icons-react"
+import { useShare } from "@/hooks/use-share"
+import { usePathname } from "next/navigation"
+import Link from "next/link"
+import { Route } from "next"
 
 export function PoemCard({
   poem,
@@ -38,6 +36,13 @@ export function PoemCard({
   const [open, setOpen] = useState(false)
   const chevronsUpDownIconRef = useRef<ChevronsUpDownIconHandle>(null)
 
+  const pathname = usePathname()
+  const { isShared, share } = useShare({
+    title: poem.title,
+    text: poem.content,
+    shareUrl: `${pathname}/${poem.id}`,
+  })
+
   useEffect(() => {
     const controls = chevronsUpDownIconRef.current
     if (!controls) return
@@ -53,7 +58,7 @@ export function PoemCard({
     copy(poem.content)
   }
 
-  // const t = useTranslations("poemSection")
+  const t = useTranslations("poemSection")
 
   return (
     <motion.article
@@ -69,11 +74,11 @@ export function PoemCard({
       }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.3,
+        duration: 0.03 * i,
         ease: "easeInOut",
       }}
       className={cn(
-        "relative w-auto rounded-lg bg-poem-card p-4",
+        "relative w-auto rounded-lg bg-poem-card p-4 sm:p-6",
         locale === "en" ? "font-manrope" : "font-devanagari",
         className
       )}
@@ -88,10 +93,13 @@ export function PoemCard({
         <div className="flex items-center gap-3">
           <SubHeading
             as="h3"
-            className="font-medium text-accent-foreground sm:text-xl"
+            className="font-devanagari font-medium text-accent-foreground sm:text-xl"
           >
             {i}. {poem.title}
           </SubHeading>
+          {poem.subtitle && (
+            <p className="text-sm text-muted-foreground">{poem.subtitle}</p>
+          )}
         </div>
         <ChevronsUpDownIcon
           ref={chevronsUpDownIconRef}
@@ -101,18 +109,46 @@ export function PoemCard({
       </motion.button>
       <motion.pre
         animate={{
-          height: open ? "auto" : 120,
+          height: open ? "auto" : 100,
         }}
         className={cn(
           "overflow-hidden font-devanagari leading-relaxed font-normal text-poem sm:text-lg",
-          !open && "mask-b-from-70%"
+          !open && "mask-b-from-30%"
         )}
       >
         {poem.content}
       </motion.pre>
-      <AudioPlayer id={poem.id} src={poem.src} />
+      <AudioPlayer id={poem.id} src={poem.src} className="my-4" />
+      <div className="flex items-center gap-4">
+        <Button
+          variant={"outline"}
+          size={"sm"}
+          onClick={() => setOpen((open) => !open)}
+          className={"text-sm text-muted-foreground hover:text-foreground"}
+        >
+          {!open ? t("show") : t("hide")}
+        </Button>
 
-      {/* <AnimatePresence initial={false}> */}
+        <Button variant={"outline"} size={"sm"} onClick={share}>
+          {isShared ? (
+            <IconCheck className="size-3.5 text-green-600 sm:size-4" />
+          ) : (
+            <IconShare3 className="size-3.5 text-primary sm:size-4" />
+          )}
+        </Button>
+
+        <Button
+          variant={"outline"}
+          nativeButton={false}
+          size={"sm"}
+          render={
+            <Link href={`/poems/${poem.id}` as Route}>
+              <IconLink className="size-3.5 sm:size-4" />
+            </Link>
+          }
+        ></Button>
+      </div>
+
       {open && (
         <motion.div
           initial={{
@@ -125,36 +161,20 @@ export function PoemCard({
             height: "auto",
             filter: "blur(0px)",
           }}
-          // exit={{
-          //   opacity: 0,
-          //   height: 0,
-          //   filter: "blur(10px)",
-          // }}
           transition={{
             duration: 0.3,
           }}
           className="mt-1 flex w-full items-center justify-end overflow-hidden"
         >
-          {poem.subtitle && (
-            <motion.p
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="pr-10 text-right text-sm text-muted-foreground"
-            >
-              {poem.subtitle}
-            </motion.p>
-          )}
           <CopyButton
             text={poem.content}
             onCopySuccess={() => console.log("Copied")}
             onCopyError={(error) => console.error("Copy error:", error)}
             onClick={handleCopy}
-            className="relative rounded-md bg-poem-card p-1.5 hover:text-neutral-950"
+            className="absolute rounded-md bg-poem-card p-1.5 hover:text-neutral-950"
           />
         </motion.div>
       )}
-      {/* </AnimatePresence> */}
     </motion.article>
   )
 }

@@ -9,7 +9,7 @@ export function Cta() {
   const t = useTranslations("shared")
 
   return (
-    <AnimatedDiv className="flex items-center gap-6">
+    <AnimatedDiv className="flex items-center gap-4">
       <Button
         nativeButton={false}
         variant="default"

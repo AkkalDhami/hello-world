@@ -36,15 +36,14 @@ export function BackToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="fixed right-6 bottom-8 z-40"
+          className="fixed right-10 bottom-14 z-40"
         >
           <Button
-            variant="secondary"
             size="icon-lg"
             onClick={() => {
               scrollToTop()
             }}
-            className="rounded-full border border-border/50 bg-muted backdrop-blur-md transition-all hover:bg-secondary"
+            className="rounded-full border border-border/50 backdrop-blur-md transition-all"
             aria-label="Back to top"
           >
             <IconArrowUp className="size-4.5" />

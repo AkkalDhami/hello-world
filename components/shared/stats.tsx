@@ -8,34 +8,34 @@ import {
   IconProps,
 } from "@tabler/icons-react"
 import { ForwardRefExoticComponent, RefAttributes } from "react"
-import { AnimatedNumber } from "../ui/animated-number"
 import { motion } from "motion/react"
+import { useTranslations } from "next-intl"
 
 type Stat = {
   title: string
-  value: number
+  value: string
   icon: ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>
 }
 
-const stats: Stat[] = [
-  {
-    title: "Poems",
-    value: 30,
-    icon: IconBook,
-  },
-  {
-    title: "Awards",
-    value: 8,
-    icon: IconTrophy,
-  },
-  {
-    title: "Works",
-    value: 20,
-    icon: IconPencil,
-  },
-]
-
 export function Stats() {
+  const t = useTranslations("shared")
+  const stats: Stat[] = [
+    {
+      title: t("stats.poems.label"),
+      value: t("stats.poems.value"),
+      icon: IconBook,
+    },
+    {
+      title: t("stats.awards.label"),
+      value: t("stats.awards.value"),
+      icon: IconTrophy,
+    },
+    {
+      title: t("stats.essays.label"),
+      value: t("stats.essays.value"),
+      icon: IconPencil,
+    },
+  ]
   return (
     <AnimatedDiv className="flex flex-wrap items-center gap-12">
       {stats.map((stat, i) => (
@@ -52,7 +52,7 @@ export function Stats() {
           }}
           viewport={{ once: true }}
           transition={{
-            duration: (i + 1) * 0.4,
+            duration: i * 0.4,
             ease: "easeInOut",
           }}
           key={stat.title}
@@ -63,15 +63,7 @@ export function Stats() {
             <span className="text-sm font-medium text-muted-foreground">
               {stat.title}
             </span>
-            <AnimatedNumber
-              springOptions={{
-                bounce: 4,
-                duration: 30000,
-              }}
-              value={stat.value}
-              className="text-lg font-medium"
-              suffix="+"
-            />
+            <span className="text-xl font-medium">{stat.value} +</span>
           </div>
         </motion.div>
       ))}

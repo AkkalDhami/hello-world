@@ -60,7 +60,7 @@ export function AudioPlayer({ id, src, className }: AudioPlayerProps) {
   return (
     <div
       className={cn(
-        "my-1.5 w-full rounded-xl border bg-background p-3",
+        "my-1.5 w-full rounded-lg border bg-background p-3",
         className
       )}
     >
