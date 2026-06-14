@@ -3,10 +3,8 @@
 import { cn } from "@/lib/utils"
 import {
   IconBrandFacebook,
-  IconBrandGithub,
   IconBrandInstagram,
   IconBrandLinkedin,
-  IconBrandX,
   IconMail,
 } from "@tabler/icons-react"
 import { Route } from "next"
@@ -20,7 +18,6 @@ import {
 import {
   EMAIL_URL,
   FACEBOOK_URL,
-  GITHUB_URL,
   INSTAGRAM_URL,
   LINKEDIN_URL,
 } from "@/lib/constants"
@@ -41,11 +38,6 @@ const socialLinks = [
     name: "LinkedIn",
     icon: IconBrandLinkedin,
     href: LINKEDIN_URL,
-  },
-  {
-    name: "GitHub",
-    icon: IconBrandGithub,
-    href: GITHUB_URL,
   },
   {
     name: "Email",

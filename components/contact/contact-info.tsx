@@ -33,7 +33,13 @@ export function ContactsInfo({ className }: { className?: string }) {
     },
   ]
   return (
-    <Section id="contacts" className={cn(className)}>
+    <Section
+      id="contacts"
+      className={cn(
+        "grid items-center gap-4 text-muted-foreground sm:grid-cols-2",
+        className
+      )}
+    >
       {contactInfo.map((item, i) => (
         <motion.div
           key={item.label}
@@ -62,7 +68,7 @@ export function ContactsInfo({ className }: { className?: string }) {
               <span className="text-sm font-normal tracking-widest text-muted-foreground uppercase">
                 {item.label}
               </span>
-              <p className="text-base font-normal">{item.value}</p>
+              <p className="text-sm sm:text-base font-normal">{item.value}</p>
               <CopyButton
                 text={item.value}
                 className={cn(
