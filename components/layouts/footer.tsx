@@ -87,7 +87,7 @@ export function Footer() {
           }}
           viewport={{ once: true }}
         >
-          <ContactsInfo className="grid items-center gap-4 text-muted-foreground sm:grid-cols-2" />
+          <ContactsInfo />
         </motion.div>
       </motion.div>
     </footer>

@@ -21,18 +21,17 @@ export function SubHeading({
         y: 20,
         filter: "blur(10px)",
       }}
-      whileInView={{
+      animate={{
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
       }}
-      viewport={{ once: true }}
       transition={{
         duration: 0.4,
         ease: "easeInOut",
       }}
       className={cn(
-        "animate-fade-in-blur sm:max-w-3xl text-base text-muted-foreground sm:text-lg",
+        "animate-fade-in-blur text-base text-muted-foreground sm:max-w-3xl sm:text-lg",
         as === "h3" && "font-medium",
         className
       )}

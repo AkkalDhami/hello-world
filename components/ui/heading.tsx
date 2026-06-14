@@ -21,11 +21,10 @@ export function Heading({
         opacity: 0,
         filter: "blur(10px)",
       }}
-      whileInView={{
+      animate={{
         opacity: 1,
         filter: "blur(0px)",
       }}
-      viewport={{ once: true }}
       transition={{
         duration: 0.3,
         ease: "easeInOut",
